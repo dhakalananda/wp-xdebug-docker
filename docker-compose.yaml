@@ -1,0 +1,26 @@
+version: '3.3'
+
+services:
+  db:
+    image: mariadb:latest
+    restart: on-failure
+    environment:
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: wordpress
+      MARIADB_ROOT_PASSWORD: wordpress
+      MARIADB_DATABASE: wordpress
+
+  wp:
+    depends_on:
+    - db
+    image: automattic/wordpress-xdebug
+    volumes:
+    - ./wp:/var/www/html
+    - ./upload.ini:/usr/local/etc/php/conf.d/uploads.ini
+    ports:
+    - 8000:80
+    restart: on-failure
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
