@@ -38,3 +38,5 @@ Example launch.json file:
    ```
 
 For more info: https://code.visualstudio.com/docs/devcontainers/attach-container
+
+This repo makes use of https://github.com/Automattic/wordpress-xdebug image
