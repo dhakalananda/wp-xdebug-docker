@@ -13,7 +13,7 @@ services:
   wp:
     depends_on:
     - db
-    image: automattic/wordpress-xdebug
+    image: automattic/wordpress-xdebug:latest
     volumes:
     - ./wp:/var/www/html
     - ./upload.ini:/usr/local/etc/php/conf.d/uploads.ini
