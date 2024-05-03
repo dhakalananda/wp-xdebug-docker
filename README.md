@@ -14,6 +14,20 @@ What does this repository offer?
 
 XDebug is listening on port 9000. Use your preferred IDE to attach to the listener.
 
+### For MacOS
+
+For some Mac devices, using the docker-compose might install AMD version so:
+
+1. `git clone https://github.com/Automattic/wordpress-xdebug`
+2. `cd wordpress-xdebug`
+3. `docker build -t wp-debug:latest .`
+4. `cd`
+5. `git clone https://github.com/dhakalananda/wp-xdebug-docker`
+6. `cd wp-xdebug-docker`
+7. Replace the `image: automattic/wordpress-xdebug:latest` with `image: wp-debug:latest` in the docker-compose.yaml file
+8. `docker-compose up -d`
+9. Navigate to http://localhost:8000 and set up WordPress
+
 ### Attaching with VSCode:
 
 1. Install Dev Container & PHP Debug VSCode plugin
