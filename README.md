@@ -14,6 +14,10 @@ What does this repository offer?
 
 XDebug is listening on port 9000. Use your preferred IDE to attach to the listener.
 
+### For Windows
+
+- Remove the line `- ./wp:/var/www/html` from the `docker-compose.yaml` file
+
 ### For MacOS
 
 For some Mac devices, using the docker-compose might install AMD version so:
