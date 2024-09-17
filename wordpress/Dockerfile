@@ -1,5 +1,7 @@
 FROM wordpress:latest
 
+COPY upload.ini /usr/local/etc/php/conf.d/uploads.ini
+
 RUN pecl install "xdebug" \
     && docker-php-ext-enable xdebug
 
