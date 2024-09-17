@@ -14,9 +14,6 @@ services:
     depends_on:
     - db
     image: automattic/wordpress-xdebug:latest
-    volumes:
-    - ./wp:/var/www/html
-    - ./upload.ini:/usr/local/etc/php/conf.d/uploads.ini
     ports:
     - 8000:80
     restart: on-failure
