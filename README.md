@@ -58,3 +58,35 @@ Example launch.json file:
 For more info: https://code.visualstudio.com/docs/devcontainers/attach-container
 
 This repo makes use of https://github.com/Automattic/wordpress-xdebug image
+
+## Setting up Old WP Instance
+
+No XDebug here!!
+
+```bash
+docker network create wp-network
+
+docker run -d --name wp-mariadb \
+  --network wp-network \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -e MYSQL_DATABASE=wordpress \
+  -e MYSQL_USER=wp_user \
+  -e MYSQL_PASSWORD=wp_pass \
+  mariadb:latest
+
+docker run -d --name oldwp \
+  --network wp-network \
+  -p 4444:80 \
+  -e WORDPRESS_DB_HOST=wp-mariadb \
+  -e WORDPRESS_DB_USER=wp_user \
+  -e WORDPRESS_DB_PASSWORD=wp_pass \
+  -e WORDPRESS_DB_NAME=wordpress \
+  wordpress:5.6
+```
+
+To exceed the file upload limit, add the below lines in the `.htaccess` file.
+
+```htaccess
+php_value upload_max_filesize 500M
+php_value post_max_size 500M
+```
