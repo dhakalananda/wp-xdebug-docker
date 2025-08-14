@@ -12,10 +12,11 @@ services:
 
   wp:
     depends_on:
-    - db
-    image: automattic/wordpress-xdebug:latest
+      - db
+    build:
+      context: ./wordpress
     ports:
-    - 8000:80
+      - 8000:80
     restart: on-failure
     environment:
       WORDPRESS_DB_HOST: db:3306
